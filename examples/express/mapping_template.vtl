@@ -1,0 +1,19 @@
+{
+  "headers": {
+#foreach($key in $input.params().header.keySet())
+    "$key": "$input.params().header.get($key)"#if($foreach.hasNext), #end
+#end
+  },
+  "querystring": {
+#foreach($key in $input.params().querystring.keySet())
+    "$key": "$input.params().querystring.get($key)"#if($foreach.hasNext), #end
+#end
+  },
+  "form": {
+#set($form = $input.path('$').split('&'))
+#foreach($kvString in $form)
+  #set($kv = $kvString.split('='))
+  "$kv[0]": "$util.urlDecode($kv[1])"#if($foreach.hasNext),#end
+#end
+  }
+}

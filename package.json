@@ -1,0 +1,33 @@
+{
+  "name": "api-gateway-mapping-template",
+  "version": "0.0.1",
+  "description": "Make AWS API Gateway's Mapping Template testable.",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/ToQoz/api-gateway-mapping-template.git"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "JSONPath": "^0.11.2",
+    "clone": "^1.0.2",
+    "velocityjs": "^0.7.4"
+  },
+  "devDependencies": {
+    "adm-zip": "^0.4.7",
+    "aws-sdk": "^2.2.22",
+    "bluebird": "^3.0.6",
+    "express": "^4.13.3",
+    "mocha": "^2.3.4",
+    "sprintf-js": "^1.0.3"
+  },
+  "scripts": {
+    "test": "mocha",
+    "gen": "TEST=test/_.js MD=test/_.md node misc/gen.js"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Takatoshi Matsumoto",
+    "email": "toqoz403@gmail.com",
+    "url": "http://toqoz.net"
+  }
+}
