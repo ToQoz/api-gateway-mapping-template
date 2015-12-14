@@ -1,6 +1,6 @@
 {
   "name": "api-gateway-mapping-template",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Make AWS API Gateway's Mapping Template testable.",
   "repository": {
     "type": "git",
