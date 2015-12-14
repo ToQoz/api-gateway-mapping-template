@@ -33,5 +33,6 @@
     "name": "Takatoshi Matsumoto",
     "email": "toqoz403@gmail.com",
     "url": "http://toqoz.net"
-  }
+  },
+  "tonicExampleFilename": "./example.js"
 }
