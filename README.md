@@ -10,6 +10,27 @@ make AWS API Gateway's Mapping Template testable
 npm install api-gateway-mapping-template
 ```
 
+## Usage
+
+simple.js:
+
+```node
+var mappingTemplate = require('api-gateway-mapping-template')
+
+var vtl = '$input.json(\'$.data\')';
+var payload = '{"data": {"url": "https://github.com/ToQoz/api-gateway-mapping-template"}}';
+
+var result = mappingTemplate(vtl, payload)
+console.dir(result);
+```
+
+***
+
+```
+$ node ./simple.js
+'{"url":"https://github.com/ToQoz/api-gateway-mapping-template"}'
+```
+
 ## Examples
 
 See [./examples](/examples)
