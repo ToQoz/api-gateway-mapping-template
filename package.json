@@ -16,6 +16,7 @@
     "adm-zip": "^0.4.7",
     "aws-sdk": "^2.2.22",
     "bluebird": "^3.0.6",
+    "conventional-changelog": "^0.5.1",
     "express": "^4.13.3",
     "mocha": "^2.3.4",
     "sprintf-js": "^1.0.3"
