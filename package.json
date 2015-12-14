@@ -13,15 +13,16 @@
     "velocityjs": "^0.7.4"
   },
   "devDependencies": {
-    "api-gateway-mapping-template": "./",
     "adm-zip": "^0.4.7",
+    "api-gateway-mapping-template": "./",
     "aws-sdk": "^2.2.22",
     "bluebird": "^3.0.6",
     "conventional-changelog": "^0.5.1",
     "conventional-github-releaser": "^0.5.0",
     "express": "^4.13.3",
     "mocha": "^2.3.4",
-    "sprintf-js": "^1.0.3"
+    "sprintf-js": "^1.0.3",
+    "testling": "^1.7.1"
   },
   "scripts": {
     "test": "mocha",
@@ -35,5 +36,19 @@
     "email": "toqoz403@gmail.com",
     "url": "http://toqoz.net"
   },
-  "tonicExampleFilename": "./example.js"
+  "tonicExampleFilename": "./example.js",
+  "testling": {
+    "harness": "mocha-bdd",
+    "files": "test/*.js",
+    "browsers": [
+      "ie/6..latest",
+      "chrome/22..latest",
+      "firefox/16..latest",
+      "safari/latest",
+      "opera/11.0..latest",
+      "iphone/6..latest",
+      "ipad/6..latest",
+      "android-browser/latest"
+    ]
+  }
 }
