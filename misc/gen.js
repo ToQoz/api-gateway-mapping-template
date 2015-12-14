@@ -49,8 +49,13 @@ var post = require('./post');
       console.log(endpoint.url);
 
       var q = examples.map(function(ex, i) {
-        return post(endpoint.url, extend({}, ex.headers, {'Content-Type': "text/test-" + i}), ex.payload)
+        var req = function() { return post(endpoint.url, extend({}, ex.headers, {'Content-Type': "text/test-" + i}), ex.payload); };
+        return req()
           .then(function(res) {
+            if (res.statusCode === 500) {
+              return wait(1000).req();
+            }
+
             res.headers = ex.headers;
             res.template = ex.template;
             res.payload = ex.payload;
@@ -277,4 +282,12 @@ function hash(input) {
   var sha1 = crypto.createHash('sha1');
   sha1.update(input);
   return sha1.digest('hex').slice(0, 8);
+}
+
+function wait(delay) {
+  return function() {
+    return new Promise(function(resolve) {
+      setTimeout(function() { resolve(); }, delay);
+    });
+  };
 }
