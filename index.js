@@ -63,16 +63,23 @@ module.exports = function(template, payload, params, context) {
     }
   };
 
-  // Workaround to followings
-  // When the tempalte is "$input.params" (= function)
-  //   - AWS API Gateway returns "{}".
-  //   - This is not org.apache.velocity's behaviour. It returns "$input.params".
-  // When the tempalte is "$input" or "$input"
-  //   - AWS API Gateway returns "{}"
-  //   - This is not org.apache.velocity's behaviour. It returns serialized hash.
+  data = workaroundAwsObjectSerialization(data);
+
+  var ast = Velocity.parse(template.toString());
+  return (new Velocity.Compile(ast)).render(data);
+};
+
+// Workaround to followings
+//   When the tempalte is "$input.params" (is a Function)
+//     - AWS API Gateway returns "{}".
+//     - This is not org.apache.velocity's behaviour. It returns "$input.params".
+//   When the tempalte is "$input" or "$util"
+//     - AWS API Gateway returns "{}"
+//     - This is not org.apache.velocity's behaviour. It returns serialized hash.
+function workaroundAwsObjectSerialization(data) {
   var returnEmptyObject = function() { return "{}"; };
 
-  // This never be called because velocity.js will process.
+  // This never be called because keySet/entrySet/size will be processed by velocity.js.
   // But I want to handling only toString
   var builtinMethod = function() { throw "unexpected error"; };
   builtinMethod.toString = returnEmptyObject;
@@ -89,9 +96,8 @@ module.exports = function(template, payload, params, context) {
     obj.size = builtinMethod;
   });
 
-  var ast = Velocity.parse(template.toString());
-  return (new Velocity.Compile(ast)).render(data);
-};
+  return data;
+}
 
 function workaroundJsonPath(jsonpath) {
   return function(obj, path) {
