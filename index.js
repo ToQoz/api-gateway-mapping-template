@@ -1,22 +1,6 @@
 var clone = require('clone');
 var Velocity = require('velocityjs');
-var _jsonpath = require('JSONPath');
-var jsonpath = function(obj, path) {
-  if (path === '$') {
-    return obj;
-  }
-
-  var result = _jsonpath({
-    json: obj,
-    path: path
-  });
-
-  if (result.length === 1) {
-    return result[0];
-  } else {
-    return result;
-  }
-};
+var jsonpath = workaroundJsonPath(require('JSONPath'));
 
 module.exports = function(template, payload, params, context) {
   params = clone(params || {});
@@ -108,6 +92,25 @@ module.exports = function(template, payload, params, context) {
   var ast = Velocity.parse(template.toString());
   return (new Velocity.Compile(ast)).render(data);
 };
+
+function workaroundJsonPath(jsonpath) {
+  return function(obj, path) {
+    if (path === '$') {
+      return obj;
+    }
+
+    var result = jsonpath({
+      json: obj,
+      path: path
+    });
+
+    if (result.length === 1) {
+      return result[0];
+    } else {
+      return result;
+    }
+  };
+}
 
 function walk(obj, cb) {
   cb(obj);
