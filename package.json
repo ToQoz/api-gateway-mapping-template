@@ -23,7 +23,8 @@
   },
   "scripts": {
     "test": "mocha",
-    "gen": "TEST=test/_.js MD=test/_.md node misc/gen.js"
+    "gen": "TEST=test/_.js MD=test/_.md node misc/gen.js",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -w -r 0"
   },
   "license": "MIT",
   "author": {
