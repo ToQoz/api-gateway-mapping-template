@@ -132,6 +132,22 @@ describe('$input.path|$input.json', function() {
       assert.deepEqual(expected, actual);
     });
   });
+  // https://github.com/ToQoz/api-gateway-mapping-template/blob/master/test/_.md#example-ec2bf3b4
+  describe('H=`{}` P=`` ===> T=`$input.keySet`', function() {
+    it('return ', function() {
+      var expected = {};
+      var actual = JSON.parse(mappingTemplate("$input.keySet", "", {}));
+      assert.deepEqual(expected, actual);
+    });
+  });
+  // https://github.com/ToQoz/api-gateway-mapping-template/blob/master/test/_.md#example-3e03488f
+  describe('H=`{}` P=`` ===> T=`$input.params.keySet`', function() {
+    it('return ', function() {
+      var expected = {};
+      var actual = JSON.parse(mappingTemplate("$input.params.keySet", "", {}));
+      assert.deepEqual(expected, actual);
+    });
+  });
   // https://github.com/ToQoz/api-gateway-mapping-template/blob/master/test/_.md#example-a35f2355
   describe('H=`{}` P=`` ===> T=`$util`', function() {
     it('return ', function() {

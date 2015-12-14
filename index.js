@@ -79,26 +79,49 @@ module.exports = function(template, payload, params, context) {
     }
   };
 
-  // API Gateway convert function to "{}" on toString.
+  // Workaround to followings
+  // When the tempalte is "$input.params" (= function)
+  //   - AWS API Gateway returns "{}".
+  //   - This is not org.apache.velocity's behaviour. It returns "$input.params".
+  // When the tempalte is "$input" or "$input"
+  //   - AWS API Gateway returns "{}"
+  //   - This is not org.apache.velocity's behaviour. It returns serialized hash.
   var returnEmptyObject = function() { return "{}"; };
-  [
-    data.input,
-    data.input.params,
-    data.input.path,
-    data.input.json,
-    data.util,
-    data.util.escapeJavaScript,
-    data.util.urlEncode,
-    data.util.urlDecode,
-    data.util.base64Encode,
-    data.util.base64Decode,
-  ].forEach(function(f) {
-    f.toString = returnEmptyObject;
+
+  // This never be called because velocity.js will process.
+  // But I want to handling only toString
+  var builtinMethod = function() { throw "unexpected error"; };
+  builtinMethod.toString = returnEmptyObject;
+
+  data.input.toString = returnEmptyObject;
+  data.util.toString = returnEmptyObject;
+  walk(data, function(obj) {
+    if (typeof(obj) == 'function') {
+      obj.toString = returnEmptyObject;
+    }
+
+    obj.keySet = builtinMethod;
+    obj.entrySet = builtinMethod;
+    obj.size = builtinMethod;
   });
 
   var ast = Velocity.parse(template.toString());
   return (new Velocity.Compile(ast)).render(data);
 };
+
+function walk(obj, cb) {
+  cb(obj);
+
+  if (Array.isArray(obj)) {
+    obj.forEach(function(c) {
+      walk(c, cb);
+    });
+  } else if ({}.toString.call(obj) === '[object Object]') {
+    Object.keys(obj).forEach(function(k) {
+      walk(obj[k], cb);
+    });
+  }
+}
 
 function base64Encode(x) {
   return (new Buffer(x)).toString('base64');

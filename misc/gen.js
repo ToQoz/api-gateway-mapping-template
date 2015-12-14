@@ -196,6 +196,16 @@ var post = require('./post');
     headers: {},
   },
   {
+    template: '$input.keySet',
+    payload: "",
+    headers: {},
+  },
+  {
+    template: '$input.params.keySet',
+    payload: "",
+    headers: {},
+  },
+  {
     template: '$util',
     payload: "",
     headers: {},
