@@ -33,7 +33,8 @@ $ node ./simple.js
 
 ## Examples
 
-See [./examples](/examples)
+- [./examples/express](/examples/express) - example with express in order to test API Gateway + Lambda in your local.
+- [online checker](https://github.com/ToQoz/mapping-template-checker.toqoz.net) - http://mapping-template-checker.toqoz.net
 
 ## API
 
