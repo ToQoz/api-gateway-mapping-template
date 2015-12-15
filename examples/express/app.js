@@ -16,9 +16,16 @@ app.post("/", function(req, res) {
   fs.readFile(__dirname + "/mapping_template.vtl", function(err, data) {
     var template = data.toString();
     var payload = req.rawBody;
-    var params = {header: req.headers, path: req.params, querystring: req.query};
 
-    var json = mappingTemplate(template, payload, params);
+    var json = mappingTemplate({
+      template: template,
+      payalod: payload,
+      params: {
+        header: req.headers,
+        path: req.params,
+        querystring: req.query
+      }
+    });
     var event = JSON.parse(json);
 
     require("./lambda").handler(event, {succeed: res.send.bind(res)});
