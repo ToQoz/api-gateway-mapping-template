@@ -53,7 +53,7 @@ var post = require('./post');
         return req()
           .then(function(res) {
             if (res.statusCode === 500) {
-              return wait(1000).req();
+              return wait(1000)().then(req);
             }
 
             res.headers = ex.headers;
