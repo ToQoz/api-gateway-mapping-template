@@ -1,3 +1,13 @@
+<a name="0.0.4"></a>
+## [0.0.4](https://github.com/ToQoz/api-gateway-mapping-template/compare/v0.0.3...v0.0.4) (2015-12-15)
+
+
+### Bug Fixes
+
+* **example:** follow new(v.0.0.3) API ([404742b](https://github.com/ToQoz/api-gateway-mapping-template/commit/404742b))
+
+
+
 <a name="0.0.3"></a>
 ## [0.0.3](https://github.com/ToQoz/api-gateway-mapping-template/compare/v0.0.2...v0.0.3) (2015-12-15)
 
