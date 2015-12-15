@@ -2,13 +2,18 @@ var clone = require('clone');
 var Velocity = require('velocityjs');
 var jsonpath = workaroundJsonPath(require('JSONPath'));
 
-module.exports = function(template, payload, params, context) {
-  params = clone(params || {});
+module.exports = function(parameters) {
+  parameters = clone(parameters || {});
+
+  var template = parameters.template;
+  var payload = parameters.payload;
+
+  var params = clone(parameters.params || {});
   params.path = params.path || {};
   params.querystring = params.querystring || {};
   params.header = params.header || {};
 
-  context = clone(context || {});
+  var context = clone(parameters.context || {});
   context.identity = context.identity || {};
 
   // API Gateway Mapping Template Reference

@@ -264,14 +264,14 @@ Result.prototype.toTest = function(out, indentLevel) {
   if (this.statusCode !== 200 || this.responseBody.indexOf("{errorMessage=Unable") === 0) {
     out.write(sprintf(indent + "describe('H=`%s` P=`%s` ===> T=`%s`', function() {\n", JSON.stringify(this.requestHeaders).replace(/'/g, "\\'"), this.requestBody.replace(/'/g, "\\'"), this.mappingTemplate.replace(/'/g, "\\'")));
     out.write(indent         + "  it('throw error', function() {\n");
-    out.write(sprintf(indent + "    assert.throws(function() { mappingTemplate(%s, %s, {}); });\n", JSON.stringify(this.mappingTemplate), JSON.stringify(this.requestBody)));
+    out.write(sprintf(indent + "    assert.throws(function() { mappingTemplate({template: %s, payload: %s}); });\n", JSON.stringify(this.mappingTemplate), JSON.stringify(this.requestBody)));
     out.write(        indent + "  });\n");
     out.write(        indent + "});\n");
   } else {
     out.write(sprintf(indent + "describe('H=`%s` P=`%s` ===> T=`%s`', function() {\n", JSON.stringify(this.requestHeaders).replace(/'/g, "\\'"), this.requestBody.replace(/'/g, "\\'"), this.mappingTemplate.replace(/'/g, "\\'")));
     out.write(sprintf(indent + "  it('return %s', function() {\n", this.requestBody.replace(/'/g, "\\'")));
     out.write(sprintf(indent + "    var expected = %s;\n", this.responseBody));
-    out.write(sprintf(indent + "    var actual = JSON.parse(mappingTemplate(%s, %s, {}));\n", JSON.stringify(this.mappingTemplate), JSON.stringify(this.requestBody)));
+    out.write(sprintf(indent + "    var actual = JSON.parse(mappingTemplate({template: %s, payload: %s}));\n", JSON.stringify(this.mappingTemplate), JSON.stringify(this.requestBody)));
     out.write(        indent + "    assert.deepEqual(expected, actual);\n");
     out.write(        indent + "  });\n");
     out.write(        indent + "});\n");
