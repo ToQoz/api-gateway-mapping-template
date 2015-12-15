@@ -1,3 +1,17 @@
+<a name="0.0.3"></a>
+## [0.0.3](https://github.com/ToQoz/api-gateway-mapping-template/compare/v0.0.2...v0.0.3) (2015-12-15)
+
+
+### Bug Fixes
+
+* **test:** wait(d).fn -> wait(d).then(fn) ([9652ecb](https://github.com/ToQoz/api-gateway-mapping-template/commit/9652ecb))
+
+### Features
+
+* **package:** change API signature of module.exports ([06b320f](https://github.com/ToQoz/api-gateway-mapping-template/commit/06b320f))
+
+
+
 <a name="0.0.2"></a>
 ## [0.0.2](https://github.com/ToQoz/api-gateway-mapping-template/compare/v0.0.1...v0.0.2) (2015-12-14)
 
