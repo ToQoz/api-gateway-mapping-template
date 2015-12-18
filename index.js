@@ -36,8 +36,12 @@ module.exports = function(parameters) {
       },
       json: function(path) {
         var obj;
-        // if payload starts with `{` or `[` or `"`, treat as JSON
-        if (/^\s*(?:{|\[|")/.test(this._payload)) {
+        if (this._payload === '') {
+          // if payload is empty, treat it as empty object
+          //   https://github.com/ToQoz/api-gateway-mapping-template/blob/master/test/_.md#example-098fd028
+          obj = {};
+        } else if (/^\s*(?:{|\[|")/.test(this._payload)) {
+          // if payload starts with `{` or `[` or `"`, treat as JSON
           obj = JSON.parse(this._payload);
         } else {
           // treat as string

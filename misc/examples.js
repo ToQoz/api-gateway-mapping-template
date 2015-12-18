@@ -35,6 +35,11 @@ module.exports = [
     headers: {},
   },
   {
+    template: '$input.json(\'$\')',
+    payload: "",
+    headers: {},
+  },
+  {
     template: '{"name": "$input.path(\'$\')"}',
     payload: "name=toqoz",
     headers: {},
