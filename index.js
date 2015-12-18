@@ -35,13 +35,13 @@ module.exports = function(parameters) {
         return jsonpath(obj, path);
       },
       json: function(path) {
-        var obj = JSON.parse(payload);
-        if (typeof obj === 'string') {
-          // re-parse when parsed payload is string.
-          // because of
-          //   - https://github.com/ToQoz/api-gateway-mapping-template/blob/master/test/_.md#example-a669d28c
-          //   - https://github.com/ToQoz/api-gateway-mapping-template/blob/master/test/_.md#example-1b8d22cd
-          obj = JSON.parse(obj);
+        var obj;
+        // if payload starts with `{` or `[` or `"`, treat as JSON
+        if (/^\s*(?:{|\[|")/.test(this._payload)) {
+          obj = JSON.parse(this._payload);
+        } else {
+          // treat as string
+          obj = this._payload;
         }
 
         return JSON.stringify(jsonpath(obj, path));

@@ -20,16 +20,20 @@ describe('$input.path|$input.json', function() {
       assert.deepEqual(expected, actual);
     });
   });
-  // https://github.com/ToQoz/api-gateway-mapping-template/blob/master/test/_.md#example-a669d28c
-  describe('H=`{}` P=`a=b` ===> T=`"$input.json(\'$\')"`', function() {
-    it('throw error', function() {
-      assert.throws(function() { mappingTemplate({template: "\"$input.json('$')\"", payload: "a=b"}); });
+  // https://github.com/ToQoz/api-gateway-mapping-template/blob/master/test/_.md#example-0dce6fa3
+  describe('H=`{}` P=`a=b` ===> T=`$input.json(\'$\')`', function() {
+    it('return a=b', function() {
+      var expected = "a=b";
+      var actual = JSON.parse(mappingTemplate({template: "$input.json('$')", payload: "a=b"}));
+      assert.deepEqual(expected, actual);
     });
   });
-  // https://github.com/ToQoz/api-gateway-mapping-template/blob/master/test/_.md#example-0ce08526
-  describe('H=`{}` P=`"a=b"` ===> T=`"$input.json(\'$\')"`', function() {
-    it('throw error', function() {
-      assert.throws(function() { mappingTemplate({template: "\"$input.json('$')\"", payload: "\"a=b\""}); });
+  // https://github.com/ToQoz/api-gateway-mapping-template/blob/master/test/_.md#example-dbd6cf1c
+  describe('H=`{}` P=`"a=b"` ===> T=`$input.json(\'$\')`', function() {
+    it('return "a=b"', function() {
+      var expected = "a=b";
+      var actual = JSON.parse(mappingTemplate({template: "$input.json('$')", payload: "\"a=b\""}));
+      assert.deepEqual(expected, actual);
     });
   });
   // https://github.com/ToQoz/api-gateway-mapping-template/blob/master/test/_.md#example-03be1e25
@@ -48,11 +52,11 @@ describe('$input.path|$input.json', function() {
       assert.deepEqual(expected, actual);
     });
   });
-  // https://github.com/ToQoz/api-gateway-mapping-template/blob/master/test/_.md#example-c1b4a9a5
-  describe('H=`{}` P=`{}` ===> T=`"$input.json(\'$\')"`', function() {
+  // https://github.com/ToQoz/api-gateway-mapping-template/blob/master/test/_.md#example-b9f18c27
+  describe('H=`{}` P=`{}` ===> T=`$input.json(\'$\')`', function() {
     it('return {}', function() {
-      var expected = "{}";
-      var actual = JSON.parse(mappingTemplate({template: "\"$input.json('$')\"", payload: "{}"}));
+      var expected = {};
+      var actual = JSON.parse(mappingTemplate({template: "$input.json('$')", payload: "{}"}));
       assert.deepEqual(expected, actual);
     });
   });

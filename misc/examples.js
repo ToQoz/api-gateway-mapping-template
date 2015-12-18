@@ -10,12 +10,12 @@ module.exports = [
     headers: {},
   },
   {
-    template: '"$input.json(\'$\')"',
+    template: '$input.json(\'$\')',
     payload: "a=b",
     headers: {},
   },
   {
-    template: '"$input.json(\'$\')"',
+    template: '$input.json(\'$\')',
     payload: '"a=b"',
     headers: {},
   },
@@ -30,7 +30,7 @@ module.exports = [
     headers: {},
   },
   {
-    template: '"$input.json(\'$\')"',
+    template: '$input.json(\'$\')',
     payload: "{}",
     headers: {},
   },
