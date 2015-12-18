@@ -94,7 +94,7 @@ Endpoint.prototype.createRestApi = function() {
     return apiGateway.createRestApiAsync({name: that.apiName})
       .then(function(data) {
         that.restApiId = data.id;
-        that.url = "https://" + that.restApiId + ".execute-api." + that.region + ".amazonaws.com/dev";
+        that.endpoint_url = "https://" + that.restApiId + ".execute-api." + that.region + ".amazonaws.com/dev";
 
         that.defer(function() {
           console.log("delete api restApiId=" + that.restApiId);
@@ -178,7 +178,7 @@ Endpoint.prototype.putIntegrationResponse = function(responseTemplates) {
   });
 };
 
-Endpoint.prototype.addPermission = function() {
+Endpoint.prototype.addPermissionInvokeFunction = function() {
   var that = this;
 
   return this.then(function() {
