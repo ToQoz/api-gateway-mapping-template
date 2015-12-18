@@ -68,6 +68,14 @@ describe('$input.path|$input.json', function() {
       assert.deepEqual(expected, actual);
     });
   });
+  // https://github.com/ToQoz/api-gateway-mapping-template/blob/master/test/_.md#example-91575d0e
+  describe('H=`{}` P=`` ===> T=`$input.path(\'$\')`', function() {
+    it('return ', function() {
+      var expected = {};
+      var actual = JSON.parse(mappingTemplate({template: "$input.path('$')", payload: ""}));
+      assert.deepEqual(expected, actual);
+    });
+  });
   // https://github.com/ToQoz/api-gateway-mapping-template/blob/master/test/_.md#example-25c6993c
   describe('H=`{}` P=`name=toqoz` ===> T=`{"name": "$input.path(\'$\')"}`', function() {
     it('return name=toqoz', function() {
