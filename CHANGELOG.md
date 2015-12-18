@@ -1,3 +1,14 @@
+<a name="0.0.6"></a>
+## [0.0.6](https://github.com/ToQoz/api-gateway-mapping-template/compare/v0.0.5...v0.0.6) (2015-12-18)
+
+
+### Bug Fixes
+
+* **package:** In $input.json, if payload is empty, treat it as empty object ([0bcb8e2](https://github.com/ToQoz/api-gateway-mapping-template/commit/0bcb8e2))
+* **package:** In $input.path, if payload is empty, treat it as empty object ([47cbd78](https://github.com/ToQoz/api-gateway-mapping-template/commit/47cbd78))
+
+
+
 <a name="0.0.5"></a>
 ## [0.0.5](https://github.com/ToQoz/api-gateway-mapping-template/compare/v0.0.4...v0.0.5) (2015-12-18)
 
