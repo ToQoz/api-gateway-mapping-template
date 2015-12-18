@@ -39,7 +39,7 @@ module.exports = function(parameters) {
         if (typeof obj === 'string') {
           // re-parse when parsed payload is string.
           // because of
-          //   - https://github.com/ToQoz/api-gateway-mapping-template/blob/master/test/_.md#example-0ce08526
+          //   - https://github.com/ToQoz/api-gateway-mapping-template/blob/master/test/_.md#example-a669d28c
           //   - https://github.com/ToQoz/api-gateway-mapping-template/blob/master/test/_.md#example-1b8d22cd
           obj = JSON.parse(obj);
         }
