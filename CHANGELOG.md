@@ -1,3 +1,13 @@
+<a name="0.0.5"></a>
+## [0.0.5](https://github.com/ToQoz/api-gateway-mapping-template/compare/v0.0.4...v0.0.5) (2015-12-18)
+
+
+### Bug Fixes
+
+* **package:** fix a bug in $input.json ([fde5289](https://github.com/ToQoz/api-gateway-mapping-template/commit/fde5289))
+
+
+
 <a name="0.0.4"></a>
 ## [0.0.4](https://github.com/ToQoz/api-gateway-mapping-template/compare/v0.0.3...v0.0.4) (2015-12-15)
 
