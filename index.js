@@ -79,7 +79,10 @@ module.exports = function(parameters) {
   data = workaroundAwsObjectSerialization(data);
 
   var ast = Velocity.parse(template.toString());
-  return (new Velocity.Compile(ast)).render(data);
+  var config = {
+    escape: false, // don't escape HTML
+  };
+  return (new Velocity.Compile(ast, config)).render(data);
 };
 
 // Workaround to followings
