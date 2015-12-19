@@ -1,3 +1,14 @@
+<a name="0.0.7"></a>
+## [0.0.7](https://github.com/ToQoz/api-gateway-mapping-template/compare/v0.0.6...v0.0.7) (2015-12-19)
+
+
+### Bug Fixes
+
+* **package:** don't escape HTML ([f3c5d99](https://github.com/ToQoz/api-gateway-mapping-template/commit/f3c5d99))
+* **readme:** update ([6fab78e](https://github.com/ToQoz/api-gateway-mapping-template/commit/6fab78e))
+
+
+
 <a name="0.0.6"></a>
 ## [0.0.6](https://github.com/ToQoz/api-gateway-mapping-template/compare/v0.0.5...v0.0.6) (2015-12-18)
 
