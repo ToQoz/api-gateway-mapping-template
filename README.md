@@ -42,7 +42,7 @@ $ node ./simple.js
 var mappingTemplate = require('api-gateway-mapping-template')
 ```
 
-### mappingTemplate(template, payload, params, context)
+### mappingTemplate(parameters)
 
 This function renders AWS API Gateway's Mapping Template by using given payload, params and context.
 
