@@ -2,7 +2,7 @@
 
 make AWS API Gateway's Mapping Template testable
 
-![Image](http://toqoz.net/art/api-gateway-mapping-template.png)
+![Image](http://toqoz.net/art/images/api-gateway-mapping-template.png)
 
 ## Installation
 
