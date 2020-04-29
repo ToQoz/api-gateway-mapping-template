@@ -82,7 +82,7 @@ module.exports = function(parameters) {
   var config = {
     escape: false, // don't escape HTML
   };
-  return (new Velocity.Compile(ast, config)).render(data);
+  return (new Velocity.Compile(ast, config)).render(data, null, true);
 };
 
 // Workaround to followings

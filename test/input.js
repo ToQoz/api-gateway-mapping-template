@@ -2,6 +2,13 @@ var assert = require('assert');
 var mappingTemplate = require('../');
 
 describe('$input', function() {
+  describe('null object references', function () {
+    it('render as empty string', function() {
+      assert.equal(mappingTemplate({template: '$input.path("$").item1', payload: '{"item1":"hello world"}'}), 'hello world');
+      assert.equal(mappingTemplate({template: '$input.path("$").item2', payload: '{"item1":"hello world"}'}), '');
+    });
+  });
+
   describe('.path(x)', function () {
     it('returns object at x(JSON Path) in payload', function() {
       assert.equal(mappingTemplate({template: '$input.path("$")', payload: "toqoz"}), 'toqoz');
