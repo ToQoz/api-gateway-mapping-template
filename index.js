@@ -161,7 +161,7 @@ function base64Decode(x) {
 //   http://www.ecma-international.org/ecma-262/6.0/index.html#sec-quotejsonstring
 //   DO: 2.a -> 2.b -> 2.c -> 2.d
 var escapeJavaScriptTable = {
-  '"': '\"',    // 2.a
+   '"': '\\"',    // 2.a
   '\\': '\\\\',
   '\b': '\\b',  // 2.b (skip abbrev)
   '\f': '\\f',
