@@ -3,11 +3,25 @@ var mappingTemplate = require('../');
 
 describe('$util', function() {
   describe('.escapeJavaScript()', function() {
-    it ('escapes as javascript string', function() {
-      var template = '$util.escapeJavaScript($input.path(\'$\'))';
-      var result = mappingTemplate({template: template, payload: 'bo"dy'});
-      assert.equal(result, 'bo\"dy');
+    var template = '$util.escapeJavaScript($input.path(\'$\'))';
+    var result = mappingTemplate({template: template, payload: 'bo"dy'});
+    it (`escapes as javascript string - simple - ${result}`, function() {
+      assert.equal(result, 'bo\\"dy');
     });
+    var doc = `{"foo":"${result}"}`;
+    it (`escapes as javascript string - parse stringify doc - ${doc}`, function() {
+      // this truly tests whether it is embeddable 
+      var p1 = JSON.parse(doc); // this will fail if not escaped properly
+      var s1 = JSON.stringify(p1);
+      assert.equal(s1, doc);
+    });
+    it (`escapes as javascript string - stringify parse doc - ${doc}`, function() {
+      // this is tautological - it should work always
+      var s2 = JSON.stringify(doc);
+      var p2 = JSON.parse(s2);
+      assert.equal(p2, doc);
+    });
+
   });
   describe('.urlEncode()', function() {
     it ('encodes to url', function() {
