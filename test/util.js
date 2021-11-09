@@ -5,8 +5,8 @@ describe('$util', function() {
   describe('.escapeJavaScript()', function() {
     var template = '$util.escapeJavaScript($input.path(\'$\'))';
     var result = mappingTemplate({template: template, payload: 'bo"dy'});
-    it ('escapes as javascript string - simple - ${result}', function() {
-      assert.equal(result, 'bo\"dy');
+    it (`escapes as javascript string - simple - ${result}`, function() {
+      assert.equal(result, 'bo\\"dy');
     });
     var doc = `{"foo":"${result}"}`;
     it (`escapes as javascript string - parse stringify doc - ${doc}`, function() {
