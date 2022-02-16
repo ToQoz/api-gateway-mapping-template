@@ -1,5 +1,9 @@
 var assert = require('assert');
 var mappingTemplate = require('../');
+const fs = require("fs");
+const path = require("path");
+const complexTemplate = require("./fixtures/complexMapping");
+const complexExpectedOutput = require("./fixtures/complexExpectedOutput");
 
 describe('$input', function() {
   describe('null object references', function () {
@@ -105,6 +109,14 @@ describe('$input', function() {
           assert.equal(result, '{"NAME": "TOQOZ", "AGE": "999"}');
         });
       });
+    });
+  });
+
+  describe('Complex example', function () {
+    it('Handle nested foreach', function () {
+      const payload = fs.readFileSync(path.resolve(__dirname, 'fixtures', 'complexInput.json'))
+      const result = mappingTemplate({template: complexTemplate, payload});
+      assert.deepEqual(JSON.parse(result), complexExpectedOutput);
     });
   });
 });

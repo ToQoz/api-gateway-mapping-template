@@ -10,7 +10,7 @@
   "dependencies": {
     "JSONPath": "^0.11.2",
     "clone": "^1.0.2",
-    "velocityjs": "^0.7.4"
+    "velocityjs": "^2.0.6"
   },
   "devDependencies": {
     "adm-zip": "^0.4.7",
